@@ -67,7 +67,7 @@ function App() {
   //api.europeana.eu/record/v2/search.json?query=*&colourpalette=%230000FF&wskey=ormiumsbyhon
 
   const fetchCats = async () => {
-    const apiUrl = 'https://api.thecatapi.com/v1/images/search?api_key=='
+    const apiUrl = 'https://api.thecatapi.com/v1/images/search?api_key='
 
     //api.europeana.eu/record/v2/search.json?wskey=YOUR_API_KEY&query=beethoven&qf=TYPE:SOUND
 
@@ -210,40 +210,44 @@ function App() {
   }, [])
 
   return (
-    <section className="min-h-screen p-4">
+    <section className="max-w-7xl mx-auto px-4 py-8">
       <Navbar />
-      <div className="">
-        <div className="grid grid-cols-2">
-          <div className="max-w-2xl">
+      <div className="mt-5 grid grid-cols-1">
+        <div className="grid grid-cols-1 md:grid-cols-[1fr_3fr_]">
+          <div className="m-10 grid place-items-center w-100 h-100 relative ">
             <img
-              className="h-auto max-w-full max-h-200 rounded-lg"
+              className=" w-full h-full object-cover rounded-xl"
               src={cat.url}
               alt=""
             />
           </div>
 
-          <div>
-            <h1 className="text-9xl font-bold text-center text-red-400 mt-8 mb-4 tracking-wider">
-              trágide
-            </h1>
-
+          <div className="grid">
             <div>
-              <p className="text-l tracking-wider ml-6 mt-6 text-center">
-                {bible.text}
+              <h1 className="text-8xl font-bold  text-center text-red-400 mb-4 tracking-wider ">
+                trágide
+              </h1>
+            </div>
+
+            <div className="  max-w-2xl mx-auto mt-6">
+              <p className="text-xl italic leading-relaxed text-center">
+                "{bible.text}"
               </p>
-              <p className="text-l  ml-6 mt-2 text-center">
-                {bible.book} <span></span>
-                {bible.chapter}:{bible.verse}
+              <p className="text-lg mt-4 text-center">
+                <span className="font-semibold">{bible.book}</span>{' '}
+                <span className="">
+                  {bible.chapter}:{bible.verse}
+                </span>
               </p>
             </div>
           </div>
         </div>
         <div>
-          <div className="grid grid-cols-2">
-            <div className="grid grid-cols-2 h-max-full">
+          <div className="grid grid-cols-1">
+            <div className="grid md:grid-cols-2 h-max-full">
               <div>
                 <h1 className="text-xl ml-6 mt-6">{poem.title}</h1>
-                <h1 className="text-xl ml-6 my-2"> by {poem.author}</h1>
+                <h1 className="text-2xl ml-6 my-2"> by {poem.author}</h1>
 
                 {poem.lines?.map((line, index) => (
                   <p key={index} className="ml-6 my-2">
