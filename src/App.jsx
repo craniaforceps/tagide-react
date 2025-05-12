@@ -278,34 +278,6 @@ function App() {
             )}
           </div>
         </div>
-        <div>
-          <h2 className="text-xl font-bold ml-6 mt-6 text-center">Cantos</h2>
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-4 m-4">
-            {canto.map((item) => {
-              const { id, en, gen, grp, loc, rmk, file } = item
-              const audioUrl = file.startsWith('https://')
-                ? file
-                : `https:${file}` // Certificando-se de que a URL começa com 'https://'
-
-              // Verifique a URL do áudio no console
-              console.log(audioUrl) // Adicione este log para depurar
-
-              return (
-                <div key={id} className="grid gap-4 align-top">
-                  <div>
-                    <p>{en}</p>
-                    <h2 className="text-lg font-semibold p-4">{gen}</h2>
-                    <h2 className="text-lg font-semibold p-4">{loc}</h2>
-                    <audio controls>
-                      <source src={audioUrl} type="audio/wav" />
-                      Seu navegador não suporta o elemento de áudio.
-                    </audio>
-                  </div>
-                </div>
-              )
-            })}
-          </div>
-        </div>
 
         <h2 className="text-xl font-bold ml-6 mt-6 text-center">Artworks</h2>
         <div className="grid grid-cols-2 md:grid-cols-4 gap-4 m-4">
@@ -438,6 +410,34 @@ function App() {
                     src={images[0].original}
                     alt=""
                   />
+                </div>
+              </div>
+            )
+          })}
+        </div>
+      </div>
+      <div>
+        <h2 className="text-xl font-bold ml-6 mt-6 text-center">Cantos</h2>
+        <div className="grid grid-cols-2 md:grid-cols-4 gap-4 m-4">
+          {canto.map((item) => {
+            const { id, en, gen, grp, loc, rmk, file } = item
+            const audioUrl = file.startsWith('https://')
+              ? file
+              : `https:${file}` // Certificando-se de que a URL começa com 'https://'
+
+            // Verifique a URL do áudio no console
+            console.log(audioUrl) // Adicione este log para depurar
+
+            return (
+              <div key={id} className="grid gap-4 align-top">
+                <div>
+                  <p>{en}</p>
+                  <h2 className="text-lg font-semibold p-4">{gen}</h2>
+                  <h2 className="text-lg font-semibold p-4">{loc}</h2>
+                  <audio controls>
+                    <source src={audioUrl} type="audio/wav" />
+                    Seu navegador não suporta o elemento de áudio.
+                  </audio>
                 </div>
               </div>
             )
