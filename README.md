@@ -1,12 +1,26 @@
-# React + Vite
+# .tágide
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+## Logs
 
-Currently, two official plugins are available:
+### 12/05/2025
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+Neste momento estão 9 APIs integradas: europeana, art institute of chicago, bhagavad gita, cat api, bible-api, fbi-wanted, weather-api
 
-## Expanding the ESLint configuration
+Os próximos passos passam por:
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+- Organizar o diretório de ficheiros
+- Refatorizar código;
+- Integrar axios com react query e depois os loaders do react-router;
+
+Folders organizados.
+Código a ser refatorizado (poem, bible, cat e artic, já estão).
+React Query e Axios estão integrados, os loaders vão ter de ser pensados estrategicamente.
+
+## Organização
+
+- src/api/https.js - um ficheiro com todos os axios instance por API, por enquanto sem interceptors;
+- src/components - com ficheiros de todos os componentes, terão de ser feitos subdiretórios (API components, etc)
+- src/hooks - com ficheiros individuais com todos os hooks de react-query;
+- src/services - com os fetchs para cada API;
+
+no fundo os folders services e api servem de suporte para que nos hooks cada API possa ser chamada

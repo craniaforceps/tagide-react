@@ -1,5 +1,15 @@
 import { useEffect, useState } from 'react'
 import Navbar from './Navbar'
+import BibleRandom from './components/BibleRandom'
+import ArticGallery from './components/ArticGallery'
+import RandomCat from './components/RandomCat'
+import Title from './components/Title'
+import PoemDisplay from './components/PoemDisplay'
+import GitaLibrary from './components/GitaLibrary'
+import Weather from './components/Weather'
+import FbiGallery from './components/FbiGallery'
+import XenocantoDisplay from './components/XenocantoDisplay'
+import EuropeanaGallery from './components/EuropeanaGallery'
 
 function App() {
   const [artwork, setArtwork] = useState([])
@@ -11,7 +21,7 @@ function App() {
   const [poem, setPoem] = useState([])
   const [fbi, setFbi] = useState([])
   const [meteo, setMeteo] = useState([])
-  const [canto, setCanto] = useState([])
+  // const [canto, setCanto] = useState([])
 
   const fetchArtwork = async () => {
     const url = 'https://api.artic.edu/api/v1/artworks'
@@ -23,22 +33,6 @@ function App() {
 
       setArtwork(artworksData)
       // console.log('artwork data:', artworksData)
-    } catch (error) {
-      console.log('error', error)
-    }
-  }
-
-  const fetchGita = async () => {
-    const url = 'https://vedicscriptures.github.io/chapters/'
-
-    try {
-      const resp = await fetch(url)
-      const data = await resp.json()
-
-      const gitaData = data
-
-      setGita(gitaData)
-      // console.log('gita data', gitaData)
     } catch (error) {
       console.log('error', error)
     }
@@ -97,49 +91,49 @@ function App() {
   //   }
   // }
 
-  const fetchBible = async () => {
-    const baseUrl = 'https://bible-api.com'
-    const random = '/data/web/random'
+  // const fetchBible = async () => {
+  //   const baseUrl = 'https://bible-api.com'
+  //   const random = '/data/web/random'
 
-    try {
-      const resp = await fetch(`${baseUrl}${random}`)
-      const data = await resp.json()
-      const bibleData = data.random_verse
+  //   try {
+  //     const resp = await fetch(`${baseUrl}${random}`)
+  //     const data = await resp.json()
+  //     const bibleData = data.random_verse
 
-      // console.log(bibleData)
-      setBible(bibleData)
-    } catch (error) {
-      console.log(error)
-    }
-  }
+  //     // console.log(bibleData)
+  //     setBible(bibleData)
+  //   } catch (error) {
+  //     console.log(error)
+  //   }
+  // }
 
-  const fetchPoem = async (maxLines = 50, retryCount = 0) => {
-    const baseUrl = 'https://poetrydb.org'
-    const random = '/random'
+  // const fetchPoem = async (maxLines = 50, retryCount = 0) => {
+  //   const baseUrl = 'https://poetrydb.org'
+  //   const random = '/random'
 
-    try {
-      const resp = await fetch(`${baseUrl}${random}`)
-      const data = await resp.json()
-      // console.log('fetch poem data', data)
-      const { lines, title, author, linecount } = data[0]
-      if (parseInt(linecount) > maxLines) {
-        if (retryCount < 10) {
-          console.log(
-            `Poema muito longo (${linecount} linhas). Tentando novamente...`
-          )
-          return fetchPoem(maxLines, retryCount + 1)
-        } else {
-          console.warn('Número máximo de tentativas atingido.')
-        }
-      }
-      // console.log('lines', lines)
+  //   try {
+  //     const resp = await fetch(`${baseUrl}${random}`)
+  //     const data = await resp.json()
+  //     // console.log('fetch poem data', data)
+  //     const { lines, title, author, linecount } = data[0]
+  //     if (parseInt(linecount) > maxLines) {
+  //       if (retryCount < 10) {
+  //         console.log(
+  //           `Poema muito longo (${linecount} linhas). Tentando novamente...`
+  //         )
+  //         return fetchPoem(maxLines, retryCount + 1)
+  //       } else {
+  //         console.warn('Número máximo de tentativas atingido.')
+  //       }
+  //     }
+  //     // console.log('lines', lines)
 
-      // console.log('linecount', linecount)
-      setPoem({ lines, title, author, linecount })
-    } catch (error) {
-      console.log(error)
-    }
-  }
+  //     // console.log('linecount', linecount)
+  //     setPoem({ lines, title, author, linecount })
+  //   } catch (error) {
+  //     console.log(error)
+  //   }
+  // }
 
   const fetchFbi = async () => {
     const baseUrl = 'https://api.fbi.gov/wanted/v1/list'
@@ -156,57 +150,57 @@ function App() {
     }
   }
 
-  const fetchMeteo = async () => {
-    const baseUrl = 'http://api.weatherapi.com/v1'
+  // const fetchMeteo = async () => {
+  //   const baseUrl = 'http://api.weatherapi.com/v1'
 
-    try {
-      const response = await fetch(
-        `${baseUrl}/current.json?key=${
-          import.meta.env.VITE_API_KEY_METEO
-        }&q=Santa Cruz, Torres Vedras`
-      )
-      const data = await response.json()
+  //   try {
+  //     const response = await fetch(
+  //       `${baseUrl}/current.json?key=${
+  //         import.meta.env.VITE_API_KEY_METEO
+  //       }&q=Santa Cruz, Torres Vedras`
+  //     )
+  //     const data = await response.json()
 
-      const meteoData = data.current
+  //     const meteoData = data.current
 
-      console.log(meteoData)
-      setMeteo(meteoData)
-    } catch (error) {
-      console.log(error)
-    }
-  }
+  //     // console.log(meteoData)
+  //     setMeteo(meteoData)
+  //   } catch (error) {
+  //     console.log(error)
+  //   }
+  // }
 
-  const fetchCanto = async () => {
-    const country = 'Portugal'
-    const baseUrl = 'https://xeno-canto.org/api/3/recordings'
+  // const fetchCanto = async () => {
+  //   const country = 'Portugal'
+  //   const baseUrl = 'https://xeno-canto.org/api/3/recordings'
 
-    try {
-      const resp = await fetch(
-        `${baseUrl}?query=cnt:${country}&key=${
-          import.meta.env.VITE_API_KEY_CANTO
-        }&limit=5`
-      )
-      const data = await resp.json()
-      const cantoData = data.recordings
-      setCanto(cantoData) // Salva os dados obtidos no estado
-      console.log('xenocanto', cantoData)
-    } catch (error) {
-      console.log(error)
-    }
-  }
+  //   try {
+  //     const resp = await fetch(
+  //       `${baseUrl}?query=cnt:${country}&key=${
+  //         import.meta.env.VITE_API_KEY_CANTO
+  //       }&limit=5`
+  //     )
+  //     const data = await resp.json()
+  //     const cantoData = data.recordings
+  //     setCanto(cantoData) // Salva os dados obtidos no estado
+  //     console.log('xenocanto', cantoData)
+  //   } catch (error) {
+  //     console.log(error)
+  //   }
+  // }
 
   const { condition, wind_kph, temp_c, humidity, precip_mm } = meteo
   useEffect(() => {
     fetchArtwork()
-    fetchGita()
+    // fetchGita()
     fetchEuropeana()
-    fetchCats()
+    // fetchCats()
     // fetchDucks()
-    fetchBible()
-    fetchPoem()
+    // fetchBible()
+    // fetchPoem()
     fetchFbi()
-    fetchMeteo()
-    fetchCanto()
+    // fetchMeteo()
+    // fetchCanto()
   }, [])
 
   return (
@@ -214,236 +208,26 @@ function App() {
       <Navbar />
       <div className="mt-5 grid grid-cols-1">
         <div className="grid grid-cols-1 md:grid-cols-[1fr_3fr_]">
-          <div className="m-10 grid place-items-center w-100 h-100 relative ">
-            <img
-              className=" w-full h-full object-cover rounded-xl"
-              src={cat.url}
-              alt=""
-            />
-          </div>
-
+          <RandomCat />
           <div className="grid">
-            <div>
-              <h1 className="text-8xl font-bold  text-center text-red-400 mb-4 tracking-wider ">
-                trágide
-              </h1>
-            </div>
-
-            <div className="  max-w-2xl mx-auto mt-6">
-              <p className="text-xl italic leading-relaxed text-center">
-                "{bible.text}"
-              </p>
-              <p className="text-lg mt-4 text-center">
-                <span className="font-semibold">{bible.book}</span>{' '}
-                <span className="">
-                  {bible.chapter}:{bible.verse}
-                </span>
-              </p>
-            </div>
+            <Title />
+            <BibleRandom />
           </div>
         </div>
         <div>
           <div className="grid grid-cols-1">
-            <div className="grid md:grid-cols-2 h-max-full">
-              <div>
-                <h1 className="text-xl ml-6 mt-6">{poem.title}</h1>
-                <h1 className="text-2xl ml-6 my-2"> by {poem.author}</h1>
-
-                {poem.lines?.map((line, index) => (
-                  <p key={index} className="ml-6 my-2">
-                    {line}
-                  </p>
-                ))}
-              </div>
-            </div>
-            {meteo?.condition && (
-              <div>
-                <h1 className="text-2xl font-bold ml-6 mt-6">Forecast</h1>
-                <h1 className="text-xl ml-6 mt-6">Cloud: {meteo.cloud}</h1>
-                <h1 className="text-xl ml-6 my-2">
-                  Humidity: {meteo.humidity}%
-                </h1>
-                <h1 className="text-xl ml-6 my-2">
-                  Wind Speed: {meteo.wind_kph} km/h
-                </h1>
-                <h1 className="text-xl ml-6 my-2">
-                  Temperature: {meteo.temp_c}°C
-                </h1>
-                <h1 className="text-xl ml-6 my-2">
-                  Precipitation: {meteo.precip_mm} mm
-                </h1>
-                {/* Acedendo ao icon da condição */}
-                <img src={meteo.condition.icon} alt="Weather icon" />
-              </div>
-            )}
+            <PoemDisplay />
+            <Weather />
           </div>
         </div>
+        <ArticGallery />
+        <GitaLibrary />
 
-        <h2 className="text-xl font-bold ml-6 mt-6 text-center">Artworks</h2>
-        <div className="grid grid-cols-2 md:grid-cols-4 gap-4 m-4">
-          {artwork.map((artwork) => {
-            const { artist_title, title } = artwork
-            return (
-              <div key={artwork.id} className="grid gap-4 align-top">
-                <div>
-                  <h2 className="text-lg font-semibold p-4">{title}</h2>
-                  <h2 className="text-lg font-semibold p-4">{artist_title}</h2>
-                  <img
-                    className="h-auto max-w-full rounded-lg"
-                    src={`https://www.artic.edu/iiif/2/${artwork.image_id}/full/843,/0/default.jpg`}
-                    alt=""
-                  />
-                </div>
-              </div>
-            )
-          })}
-        </div>
-        <div className="">
-          <h2 className="text-xl font-bold ml-6 mt-6 text-center">
-            Bhagavad Gita Chapters
-          </h2>
-          <ul className="list-disc m-5">
-            {gita.map((gitaItem) => {
-              const { chapter_number, name, meaning, summary } = gitaItem
-
-              return (
-                <div
-                  key={chapter_number}
-                  className="leading-loose tracking-wider text-justify grid grid-cols-[1fr_1fr_5fr] gap-4"
-                >
-                  <p className="flex justify-self-auto">{name}</p>
-                  <p>{meaning.en}</p>
-                  <p>{summary.en}</p>
-                  <p></p>
-                </div>
-              )
-            })}
-          </ul>
-        </div>
-        <h2 className="text-xl font-bold ml-6 mt-6 text-center">Europeana</h2>
-        <div className="grid grid-cols-2 md:grid-cols-4 gap-4 m-4">
-          {europeana.map((euro) => {
-            const {
-              title: [rawTitle],
-              dcCreator: [authorURI] = [],
-              edmPreview: [thumbnail] = [],
-              edmIsShownBy: [fullImage] = [],
-              dcDescription = [],
-              edmIsShownAt: [originalLink] = [],
-              rights: [license] = [],
-              country: [country] = [],
-              provider: [provider] = [],
-              guid,
-            } = euro
-            const description = dcDescription[0] || 'Sem descrição'
-            const author = authorURI || 'Unknown'
-            return (
-              <div className="">
-                <h2 className="text-lg font-semibold p-4">{rawTitle}</h2>
-                <img
-                  src={fullImage}
-                  alt={rawTitle}
-                  className="h-auto max-w-full rounded-lg"
-                />
-                {/* <p className="p-4">{author}</p>
-              <p className="p-4">{country}</p> */}
-                {/* <p className="p-4">
-          <strong>Descrição:</strong> {description}
-        </p> */}
-              </div>
-            )
-          })}
-        </div>
-        <div className="grid grid-cols-2 md:grid-cols-4 gap-4 m-4">
-          {fbi.map((item, index) => {
-            const {
-              poster_classification,
-
-              date_of_birth_used,
-              description,
-              details,
-              eyes,
-              hair,
-              images,
-              path,
-              publication,
-              race,
-              remarks,
-              sex,
-              reward_text,
-              subjects,
-              title,
-              url,
-              weight,
-            } = item
-
-            function stripHtml(htmlString) {
-              const tempDiv = document.createElement('div')
-              tempDiv.innerHTML = htmlString
-              return tempDiv.textContent || tempDiv.innerText || ''
-            }
-            return (
-              <div key={index} className="grid gap-4 align-top">
-                <div>
-                  <h2 className="text-lg text-center font-semibold m-2">
-                    {stripHtml(poster_classification)}
-                  </h2>
-                  {/* <h2 className="text-xs tracking-wide text-justify  ">
-                    {stripHtml(details)}
-                  </h2>
-                  <h2 className="text-xs tracking-wide text-justify  ">
-                    <span className="underline">reward</span>{' '}
-                    {stripHtml(remarks)}
-                  </h2> */}
-                  {/* <h2 className="text-xs tracking-wide text-justify  ">
-                    {stripHtml(reward_text)}
-                  </h2> */}
-                  {/* <h2 className="text-xs tracking-wide text-justify  ">
-                    eyes:{stripHtml(eyes)} <br /> hair:{stripHtml(hair)}
-                    <br /> race:{stripHtml(race)}
-                    <br /> weight:{stripHtml(weight)}
-                    <a href={url}>Algo</a>
-                  </h2> */}
-
-                  <img
-                    className="h-auto max-w-full rounded-lg"
-                    src={images[0].original}
-                    alt=""
-                  />
-                </div>
-              </div>
-            )
-          })}
-        </div>
+        <EuropeanaGallery />
+        <FbiGallery />
       </div>
-      <div>
-        <h2 className="text-xl font-bold ml-6 mt-6 text-center">Cantos</h2>
-        <div className="grid grid-cols-2 md:grid-cols-4 gap-4 m-4">
-          {canto.map((item) => {
-            const { id, en, gen, grp, loc, rmk, file } = item
-            const audioUrl = file.startsWith('https://')
-              ? file
-              : `https:${file}` // Certificando-se de que a URL começa com 'https://'
 
-            // Verifique a URL do áudio no console
-            console.log(audioUrl) // Adicione este log para depurar
-
-            return (
-              <div key={id} className="grid gap-4 align-top">
-                <div>
-                  <p>{en}</p>
-                  <h2 className="text-lg font-semibold p-4">{gen}</h2>
-                  <h2 className="text-lg font-semibold p-4">{loc}</h2>
-                  <audio controls>
-                    <source src={audioUrl} type="audio/wav" />
-                    Seu navegador não suporta o elemento de áudio.
-                  </audio>
-                </div>
-              </div>
-            )
-          })}
-        </div>
-      </div>
+      <XenocantoDisplay />
     </section>
   )
 }
