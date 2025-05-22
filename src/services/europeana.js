@@ -1,4 +1,5 @@
 import { europeanaAPI } from '../api/https'
+import { normalizeEuropeana } from '../utils/normalizeEuropeana'
 
 export const fetchEuropeanaArtworks = async (
   query = '*',
@@ -8,25 +9,17 @@ export const fetchEuropeanaArtworks = async (
   try {
     const response = await europeanaAPI.get('/search.json', {
       params: {
-        query: query,
+        query,
         qf: `TYPE:${type}`,
-        rows: rows,
+        rows,
       },
     })
 
     if (!response.data?.items) {
       throw new Error('Invalid response structure from Europeana API')
     }
-
-    return response.data.items.map((item) => ({
-      id: item.id,
-      title: item.title?.[0] || 'Untitled',
-      creator: item.dcCreator?.[0] || 'Unknown artist',
-      thumbnail: item.edmPreview?.[0] || '',
-      date: item.year || 'Unknown date',
-      provider: item.dataProvider?.[0] || 'Unknown provider',
-      link: item.guid || `https://www.europeana.eu/item${item.id}`,
-    }))
+    console.log(response.data.items)
+    return response.data.items.map(normalizeEuropeana)
   } catch (error) {
     console.error('Europeana API error:', {
       message: error.message,

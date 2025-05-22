@@ -6,15 +6,13 @@ const RandomCat = () => {
   if (isLoading) return <p>A carregar...</p>
   if (error) return <p>Erro: {error.message}</p>
 
-  // console.log('cat api', data)
-
   return (
-    <div>
-      <div className="m-10 grid place-items-center w-100 h-100 relative ">
+    <div className="m-5 flex justify-center">
+      <div className="w-full max-w-sm aspect-square overflow-hidden rounded-xl shadow-lg">
         <img
-          className=" w-full h-full object-cover rounded-xl"
+          className="w-full h-full object-cover"
           src={data.url}
-          alt=""
+          alt="Random Cat"
         />
       </div>
     </div>

@@ -63,3 +63,10 @@ export const europeanaAPI = axios.create({
   },
   timeout: 10000,
 })
+
+//CAT AS A SERVICE
+export const caasAPI = axios.create({
+  baseURL: 'https://cataas.com/',
+  params: {},
+  timeout: 10000,
+})

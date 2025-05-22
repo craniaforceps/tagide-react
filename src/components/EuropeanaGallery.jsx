@@ -1,6 +1,6 @@
 import { useEuropeanaArtworks } from '../hooks/useEuropeanaArtworks'
 
-const ArtworkGallery = ({ searchQuery = 'painting' }) => {
+const EuropeanaGallery = ({ searchQuery = 'painting' }) => {
   const { data, isLoading, error } = useEuropeanaArtworks(
     searchQuery,
     12,
@@ -14,15 +14,15 @@ const ArtworkGallery = ({ searchQuery = 'painting' }) => {
     <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
       {data?.map((artwork) => (
         <div key={artwork.id} className="artwork-card">
-          <img src={artwork.thumbnail} alt={artwork.title} />
-          <h3>{artwork.title}</h3>
+          <img src={artwork.imageUrl} alt={artwork.title} />
+          {/* <h3>{artwork.title}</h3>
           <p>
-            {artwork.creator} ({artwork.date})
-          </p>
+            {artwork.author || 'Autor desconhecido'} ({artwork.date})
+          </p> */}
         </div>
       ))}
     </div>
   )
 }
 
-export default ArtworkGallery
+export default EuropeanaGallery

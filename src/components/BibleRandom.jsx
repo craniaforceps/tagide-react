@@ -3,19 +3,16 @@ import { useBibleVerse } from '../hooks/useBibleVerse'
 const BibleRandom = () => {
   const { data, isLoading, error } = useBibleVerse()
 
+  console.log('bibleRandom data', data)
+
   if (isLoading) return <p>A carregar...</p>
   if (error) return <p>Erro: {error.message}</p>
 
   return (
-    <div className="  max-w-2xl mx-auto mt-6">
-      <p className="text-xl italic leading-relaxed text-center">
-        "{data.text}"
-      </p>
-      <p className="text-lg mt-4 text-center">
-        <span className="font-semibold">{data.book}</span>{' '}
-        <span className="">
-          {data.chapter}:{data.verse}
-        </span>
+    <div className="mx-auto">
+      <p className="italic text-center m-0 p-0 leading-tight">"{data.text}"</p>
+      <p className="text-center font-bold m-0 p-0 leading-tight">
+        {data.title}
       </p>
     </div>
   )
