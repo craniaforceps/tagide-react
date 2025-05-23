@@ -1,8 +1,25 @@
 import { Link } from 'react-router'
+import { useEffect, useState } from 'react'
+import { BsMoonFill, BsSunFill } from 'react-icons/bs'
 
-import sereia3 from '../assets/sereia3.svg'
+import sereiaBlack from '../assets/sereia-black.svg'
+import sereiaWhite from '../assets/sereia-white.svg'
 
 const Navbar = () => {
+  const [theme, setTheme] = useState(() => {
+    return localStorage.getItem('theme') || 'lofi'
+  })
+
+  // Aplica o tema no load
+  useEffect(() => {
+    document.documentElement.setAttribute('data-theme', theme)
+    localStorage.setItem('theme', theme)
+  }, [theme])
+
+  const toggleTheme = () => {
+    setTheme((prev) => (prev === 'dracula' ? 'lofi' : 'dracula'))
+  }
+
   return (
     <div className="navbar bg-base-100 shadow-lg max-w-6xl mx-auto px-4 py-8 w-full">
       <div className="navbar-start">
@@ -52,7 +69,11 @@ const Navbar = () => {
           to="/"
           className="btn btn-ghost text-4xl tracking-widest font-sans flex items-center gap-2"
         >
-          <img src={sereia3} alt="Logo" className="w-10 h-10" />
+          {theme === 'lofi' ? (
+            <img src={sereiaBlack} alt="Logo" className="w-10 h-10" />
+          ) : (
+            <img src={sereiaWhite} alt="Logo" className="w-10 h-10" />
+          )}
           tágide
         </Link>
       </div>
@@ -81,6 +102,9 @@ const Navbar = () => {
       </div>
 
       <div className="navbar-end">
+        <button className="pr-3 cursor-pointer" onClick={toggleTheme}>
+          {theme === 'dracula' ? <BsSunFill /> : <BsMoonFill />}
+        </button>
         <Link to="/login" className="btn">
           Login
         </Link>

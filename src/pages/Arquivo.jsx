@@ -61,74 +61,76 @@ const Arquivo = () => {
 
           <ArticSolo />
 
-          <p className="text-l px-1 text-justify mb-0 ">
+          {/* <p className="text-l px-1 text-justify mb-0 ">
             Lorem ipsum dolor sit amet consectetur adipisicing elit. Mollitia
             optio voluptatem quisquam rerum ipsam sequi odit non reiciendis
             harum aspernatur totam ut, quia molestiae dolorem quas dolor
             expedita eius nisi?
-          </p>
+          </p> */}
 
-          {/* Título + botão Artic */}
-          <div className="w-full flex justify-center">
-            <div className="flex items-baseline gap-2">
-              <h4
-                ref={articTitleRef}
-                className="text-2xl tracking-wide leading-none m-0 p-0"
-              >
-                Art Institute of Chicago
-              </h4>
-              <button
-                onClick={toggleArtic}
-                aria-expanded={articIsActive}
-                aria-controls="artic-gallery"
-                className="p-0 m-0 flex items-center justify-center"
-              >
-                {articIsActive ? (
-                  <CiSquareMinus size={24} className="align-baseline" />
-                ) : (
-                  <CiSquarePlus size={24} className="align-baseline" />
-                )}
-              </button>
+          <div className="not-prose mt-4 w-full">
+            {/* Título + botão Artic */}
+            <div className="w-full flex justify-center">
+              <div className="flex items-baseline gap-1">
+                <h4
+                  ref={articTitleRef}
+                  className="text-2xl tracking-wide leading-none m-0 p-0"
+                >
+                  Art Institute of Chicago
+                </h4>
+                <button
+                  onClick={toggleArtic}
+                  aria-expanded={articIsActive}
+                  aria-controls="artic-gallery"
+                  className="p-0 m-0 flex items-center justify-center"
+                >
+                  {articIsActive ? (
+                    <CiSquareMinus size={24} className="align-baseline" />
+                  ) : (
+                    <CiSquarePlus size={24} className="align-baseline" />
+                  )}
+                </button>
+              </div>
             </div>
+
+            {/* Secção de galeria Artic */}
+            {articIsActive && (
+              <div id="artic-gallery" className="not-prose mt-4 w-full">
+                <ArticGallery />
+              </div>
+            )}
+
+            {/* Título + botão Europeana */}
+            <div className="w-full flex justify-center m-4">
+              <div className="flex items-baseline gap-2">
+                <h4
+                  ref={europeanaTitleRef}
+                  className="text-2xl tracking-wide leading-none m-0 p-0"
+                >
+                  Europeana
+                </h4>
+                <button
+                  onClick={toggleEuropeana}
+                  aria-expanded={europeanaIsActive}
+                  aria-controls="europeana-gallery"
+                  className="p-0 m-0 flex items-center justify-center"
+                >
+                  {europeanaIsActive ? (
+                    <CiSquareMinus size={24} className="align-baseline" />
+                  ) : (
+                    <CiSquarePlus size={24} className="align-baseline" />
+                  )}
+                </button>
+              </div>
+            </div>
+
+            {/* Secção de galeria Europeana */}
+            {europeanaIsActive && (
+              <div id="europeana-gallery" className="">
+                <EuropeanaGallery />
+              </div>
+            )}
           </div>
-
-          {/* Secção de galeria Artic */}
-          {articIsActive && (
-            <div id="artic-gallery" className="mt-4">
-              <ArticGallery />
-            </div>
-          )}
-
-          {/* Título + botão Europeana */}
-          <div className="w-full flex justify-center mt-8">
-            <div className="flex items-baseline gap-2">
-              <h4
-                ref={europeanaTitleRef}
-                className="text-2xl tracking-wide leading-none m-0 p-0"
-              >
-                Europeana
-              </h4>
-              <button
-                onClick={toggleEuropeana}
-                aria-expanded={europeanaIsActive}
-                aria-controls="europeana-gallery"
-                className="p-0 m-0 flex items-center justify-center"
-              >
-                {europeanaIsActive ? (
-                  <CiSquareMinus size={24} className="align-baseline" />
-                ) : (
-                  <CiSquarePlus size={24} className="align-baseline" />
-                )}
-              </button>
-            </div>
-          </div>
-
-          {/* Secção de galeria Europeana */}
-          {europeanaIsActive && (
-            <div id="europeana-gallery" className="mt-4">
-              <EuropeanaGallery />
-            </div>
-          )}
         </article>
       </div>
     </section>

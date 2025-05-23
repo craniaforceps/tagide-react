@@ -10,8 +10,8 @@ const BibleRandom = () => {
 
   return (
     <div className="mx-auto">
-      <p className="italic text-center m-0 p-0 leading-tight">"{data.text}"</p>
-      <p className="text-center font-bold m-0 p-0 leading-tight">
+      <p className="italic text-center m-0 p-0 leading-tight">{data.text}</p>
+      <p className="text-center font-bold m-0 p-0 leading-tight capitalize">
         {data.title}
       </p>
     </div>

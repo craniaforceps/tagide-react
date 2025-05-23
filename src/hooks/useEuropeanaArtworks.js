@@ -1,7 +1,7 @@
 import { useQuery } from '@tanstack/react-query'
 import { fetchEuropeanaArtworks } from '../services/europeana'
 
-export const useEuropeanaArtworks = (query, rows, type) => {
+export const useEuropeanaArtworks = (query, rows = 9, type) => {
   return useQuery({
     queryKey: ['europeanaArtworks', query, rows, type],
     queryFn: () => fetchEuropeanaArtworks(query, rows, type),

@@ -12,7 +12,10 @@ const Login = () => {
         <h4 className="text-center text-3xl font-bold">Login</h4>
         <FormInput type="email" label="email" name="identifier" />
         <FormInput type="password" label="password" name="password" />
-        <button type="button" className="btn btn-primary btn-block">
+        <button
+          type="button"
+          className="btn btn-primary btn-block bg-black-500"
+        >
           login
         </button>
 
