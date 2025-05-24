@@ -3,8 +3,6 @@ import { useBibleVerse } from '../hooks/useBibleVerse'
 const BibleRandom = () => {
   const { data, isLoading, error } = useBibleVerse()
 
-  console.log('bibleRandom data', data)
-
   if (isLoading) return <p>A carregar...</p>
   if (error) return <p>Erro: {error.message}</p>
 

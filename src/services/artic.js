@@ -5,22 +5,19 @@ import { normalizeArtic } from '../utils/normalizeArtic'
 export async function fetchArticArtworks(
   searchTerm = '',
   page = 1,
-  limit = 12,
-  rows = 9
+  limit = 12
 ) {
   const response = await articAPI.get('/artworks/search', {
     params: {
       q: searchTerm,
-      fields:
-        'id,title,artist_display,date_display,image_id,description,artist_title',
+      fields: 'id,title,image_id,description,artist_title',
       page,
       limit,
-      rows,
     },
   })
-
-  console.log(response.data.data)
 
   const artworks = response.data.data
   return artworks.map(normalizeArtic)
 }
+
+//https://api.artic.edu/docs/

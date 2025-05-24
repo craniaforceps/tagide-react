@@ -1,4 +1,5 @@
 import { poemAPI } from '../api/https'
+import { normalizePoetry } from '../utils/normalizePoetry'
 
 // o endpoint /random pode ser utilizado mas tem uma grande diversidade de linecount, por isso usei /linecount endpoint
 
@@ -12,10 +13,11 @@ export const getRandomPoem = (poemsArray) => {
 export async function fetchPoemByLinecount() {
   const linecount = 10 //hardcoded
   const response = await poemAPI.get(`/linecount/${linecount}`)
-  return getRandomPoem(response.data)
 
-  // const randomResponse = getRandomPoem(response)
-  // console.log('randomresponse', randomResponse)
+  console.log(response.data)
 
-  return response.data
+  const randomPoem = getRandomPoem(response.data)
+  console.log(normalizePoetry(randomPoem))
+
+  return normalizePoetry(randomPoem)
 }

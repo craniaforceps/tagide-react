@@ -1,10 +1,8 @@
-const Title = () => {
+const Title = ({ text }) => {
   return (
-    <div>
-      <h1 className="text-8xl font-bold  text-center text-red-400 mb-4 tracking-wider ">
-        trágide
-      </h1>
-    </div>
+    <h1 className="text-6xl  text-red-500 text-right md:text-7xl lg:text-8xl mb-2 pb-2 lg:mb-0 lg:pb-0">
+      {text}
+    </h1>
   )
 }
 export default Title

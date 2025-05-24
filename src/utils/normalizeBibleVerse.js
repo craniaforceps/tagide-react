@@ -5,9 +5,10 @@ export function normalizeBibleVerse(item) {
     text: item.text,
     author: item.book,
     imageUrl: '',
+    date: '',
     type: 'text',
     source: 'bible',
     tags: ['bible', item.book_id],
-    metadata: item,
+    metadata: { rawData: item },
   }
 }

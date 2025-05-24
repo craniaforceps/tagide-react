@@ -4,26 +4,31 @@ import axios from 'axios'
 //BIBLE API
 export const bibleAPI = axios.create({
   baseURL: 'https://bible-api.com',
+  timeout: 8000,
 })
 
 //POEM DB API
 export const poemAPI = axios.create({
   baseURL: 'https://poetrydb.org',
+  timeout: 8000,
 })
 
 //vEDIC SCRIPTURES API
 export const gitaAPI = axios.create({
   baseURL: 'https://vedicscriptures.github.io',
+  timeout: 8000,
 })
 
 // FBI API
 export const fbiAPI = axios.create({
   baseURL: 'https://api.fbi.gov/wanted/v1',
+  timeout: 8000,
 })
 
 // ART INSTITUTE OF CHICAGO API
 export const articAPI = axios.create({
   baseURL: 'https://api.artic.edu/api/v1',
+  timeout: 8000,
 })
 
 //WEATHER API
@@ -42,9 +47,11 @@ export const catAPI = axios.create({
   baseURL: 'https://api.thecatapi.com/v1',
   params: {
     api_key: import.meta.env.VITE_API_KEY_CAT,
+    timeout: 8000,
   },
 })
 
+//xenocanto
 export const xenoCantoAPI = axios.create({
   baseURL: 'https://xeno-canto.org/api/3',
   params: {

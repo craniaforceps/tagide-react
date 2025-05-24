@@ -14,7 +14,7 @@ const Login = () => {
         <FormInput type="password" label="password" name="password" />
         <button
           type="button"
-          className="btn btn-primary btn-block bg-black-500"
+          className="btn btn-secundary btn-block bg-black-500 capitalize"
         >
           login
         </button>

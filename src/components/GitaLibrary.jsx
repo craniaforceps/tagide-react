@@ -3,8 +3,6 @@ import { useGitaChapterDescription } from '../hooks/useGitaChapterDescription'
 const GitaLibrary = () => {
   const { data, isLoading, error } = useGitaChapterDescription()
 
-  const gita = data
-
   if (isLoading) return <p>A carregar...</p>
   if (error) return <p>Erro: {error.message}</p>
 
@@ -13,24 +11,25 @@ const GitaLibrary = () => {
       <h2 className="text-xl font-bold ml-6 mt-6 text-center">
         Bhagavad Gita Chapters
       </h2>
-      <ul className="list-disc m-5">
-        {gita.map((gitaItem) => {
-          const { chapter_number, name, meaning, summary } = gitaItem
+      <div className="m-5 space-y-4">
+        {data.map((item) => {
+          const { text, title, chapter_number } = item
+          const key = `${chapter_number}-${title}` // Combinação segura
 
           return (
             <div
-              key={chapter_number}
-              className="leading-loose tracking-wider text-justify grid grid-cols-[1fr_1fr_5fr] gap-4"
+              key={key}
+              className="leading-loose tracking-wider text-justify grid grid-cols-[0.5fr_1fr_5fr] p-4 rounded-lg"
             >
-              <p className="flex justify-self-auto">{name}</p>
-              <p>{meaning.en}</p>
-              <p>{summary.en}</p>
-              <p></p>
+              <p className="font-semibold">{chapter_number}</p>
+              <p className="italic">{title}</p>
+              <p>{text}</p>
             </div>
           )
         })}
-      </ul>
+      </div>
     </div>
   )
 }
+
 export default GitaLibrary

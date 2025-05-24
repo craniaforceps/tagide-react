@@ -6,31 +6,12 @@ const FbiGallery = () => {
   if (isLoading) return <p>A carregar...</p>
   if (error) return <p>Erro: {error.message}</p>
 
-  const fbi = data.items
+  const fbi = data
 
   return (
     <div className="grid grid-cols-2 md:grid-cols-4 gap-4 m-4">
       {fbi.map((item, index) => {
-        const {
-          poster_classification,
-
-          date_of_birth_used,
-          description,
-          details,
-          eyes,
-          hair,
-          images,
-          path,
-          publication,
-          race,
-          remarks,
-          sex,
-          reward_text,
-          subjects,
-          title,
-          url,
-          weight,
-        } = item
+        const { author, date, id, imageUrl, description } = item
 
         function stripHtml(htmlString) {
           const tempDiv = document.createElement('div')
@@ -41,7 +22,7 @@ const FbiGallery = () => {
           <div key={index} className="grid gap-4 align-top">
             <div>
               <h2 className="text-lg text-center font-semibold m-2">
-                {stripHtml(poster_classification)}
+                {author}
               </h2>
               {/* <h2 className="text-xs tracking-wide text-justify  ">
                     {stripHtml(details)}
@@ -60,11 +41,7 @@ const FbiGallery = () => {
                     <a href={url}>Algo</a>
                   </h2> */}
 
-              <img
-                className="h-auto max-w-full rounded-lg"
-                src={images[0].original}
-                alt=""
-              />
+              <img className="h-auto max-w-full rounded-lg " src={imageUrl} />
             </div>
           </div>
         )

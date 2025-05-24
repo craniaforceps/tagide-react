@@ -18,7 +18,7 @@ export const fetchEuropeanaArtworks = async (
     if (!response.data?.items) {
       throw new Error('Invalid response structure from Europeana API')
     }
-    console.log(response.data.items)
+
     return response.data.items.map(normalizeEuropeana)
   } catch (error) {
     console.error('Europeana API error:', {
