@@ -1,5 +1,28 @@
 @import 'tailwindcss';
 @plugin "daisyui" {
-  themes: light --default, dark --prefersdark, dracula, winter, lofi;
+  themes:
+    light --default,
+    dark --prefersdark,
+    dracula,
+    winter,
+    lofi;
 }
 @plugin "@tailwindcss/typography";
+
+.custom-editor .ql-container {
+  height: 300px;
+  overflow-y: auto;
+  border-radius: 0.5rem;
+  box-shadow: 0 1px 6px rgba(0, 0, 0, 0.1);
+}
+
+.custom-editor .ql-toolbar {
+  border-radius: 0.5rem 0.5rem 0 0;
+  background-color: #f3f3f3;
+}
+
+.ql-editor::before {
+  color: #9ca3af; /* por exemplo, Tailwind gray-400 */
+  font-style: italic;
+  opacity: 1; /* importante: sem isto pode não aplicar */
+}

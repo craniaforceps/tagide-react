@@ -9,32 +9,40 @@ import ArticSolo from '../components/ArticSolo'
 import { useState, useRef, useEffect } from 'react'
 
 const Arquivo = () => {
-  const [articIsActive, setArticIsActive] = useState(false)
-  const [europeanaIsActive, setEuropeanaIsActive] = useState(false)
+  const [articIsActive, setArticIsActive] = useState(true)
+  const [europeanaIsActive, setEuropeanaIsActive] = useState(true)
 
   const articTitleRef = useRef(null)
   const europeanaTitleRef = useRef(null)
 
-  // Scroll quando Artic fica ativo
+  const prevArticIsActive = useRef(articIsActive)
+  const prevEuropeanaIsActive = useRef(europeanaIsActive)
+
+  // Scroll só quando articIsActive muda de false para true
   useEffect(() => {
-    if (articIsActive && articTitleRef.current) {
+    if (articIsActive && !prevArticIsActive.current && articTitleRef.current) {
       articTitleRef.current.scrollIntoView({
         behavior: 'smooth',
         block: 'start',
       })
     }
+    prevArticIsActive.current = articIsActive
   }, [articIsActive])
 
-  // Scroll quando Europeana fica ativo
+  // Scroll só quando europeanaIsActive muda de false para true
   useEffect(() => {
-    if (europeanaIsActive && europeanaTitleRef.current) {
+    if (
+      europeanaIsActive &&
+      !prevEuropeanaIsActive.current &&
+      europeanaTitleRef.current
+    ) {
       europeanaTitleRef.current.scrollIntoView({
         behavior: 'smooth',
         block: 'start',
       })
     }
+    prevEuropeanaIsActive.current = europeanaIsActive
   }, [europeanaIsActive])
-
   const toggleArtic = () => {
     setArticIsActive((prev) => !prev)
   }

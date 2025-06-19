@@ -2,8 +2,8 @@ import { Link } from 'react-router'
 import { useEffect, useState } from 'react'
 import { BsMoonFill, BsSunFill } from 'react-icons/bs'
 
-import sereiaBlack from '../assets/sereia-black.svg'
-import sereiaWhite from '../assets/sereia-white.svg'
+import sereiaBlack from '../../assets/sereia-black.svg'
+import sereiaWhite from '../../assets/sereia-white.svg'
 
 const Navbar = () => {
   const [theme, setTheme] = useState(() => {
@@ -42,7 +42,7 @@ const Navbar = () => {
           </label>
           <ul
             tabIndex={0}
-            className="menu menu-compact dropdown-content mt-3 p-2 shadow bg-base-100 rounded-box w-52 text-l"
+            className="menu menu-compact dropdown-content mt-3 p-2 shadow bg-base-100 rounded-box w-52 text-md"
           >
             <li>
               <Link to="/">Home</Link>
@@ -79,7 +79,7 @@ const Navbar = () => {
       </div>
 
       <div className="navbar-center hidden lg:flex">
-        <ul className="menu menu-horizontal p-0 tracking-wider text-xl">
+        <ul className="menu menu-horizontal p-0 tracking-wider text-md">
           <li>
             <Link to="/">Home</Link>
           </li>
@@ -102,7 +102,7 @@ const Navbar = () => {
       </div>
 
       <div className="navbar-end">
-        <button className="pr-3 cursor-pointer" onClick={toggleTheme}>
+        <button className="pr-6 cursor-pointer" onClick={toggleTheme}>
           {theme === 'dracula' ? <BsSunFill /> : <BsMoonFill />}
         </button>
         <Link to="/login" className="btn">
