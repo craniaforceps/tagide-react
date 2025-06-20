@@ -1,17 +1,19 @@
-import type { ArticType, NormalizedArtic } from './../types/api/artic'
-
-// services/artic.js
-
+import { TagideItemType } from './../types/api/tágideItem'
 import { articAPI } from '../api/https'
 import { normalizeArtic } from '../utils/normalizeArtic'
 import type { AxiosResponse } from 'axios'
 
+type ArticAPIResponse = {
+  data: any[] // dados crus da API (não são TagideItemType ainda)
+}
+
+// Fetcher
 export async function fetchArticArtworks(
   searchTerm = '',
   page = 1,
   limit = 12
-): Promise<NormalizedArtic[]> {
-  const response: AxiosResponse<{ data: ArticType[] }> = await articAPI.get(
+): Promise<TagideItemType[]> {
+  const response: AxiosResponse<ArticAPIResponse> = await articAPI.get(
     '/artworks/search',
     {
       params: {
@@ -23,8 +25,5 @@ export async function fetchArticArtworks(
     }
   )
 
-  const artworks = response.data.data
-  return artworks.map(normalizeArtic)
+  return response.data.data.map(normalizeArtic)
 }
-
-//https://api.artic.edu/docs/

@@ -1,3 +1,22 @@
+export type TagideItemType = {
+  id: string
+  title?: string
+  author?: string
+  creationDate?: string
+  text?: string
+  imageUrl?: string
+  audioUrl?: string
+  type?: 'text' | 'image' | 'sound' | 'other'
+  source: string
+  tags?: string[]
+  metadata?: {
+    originalId?: string
+    sourceUrl?: string
+    rights?: string
+    rawData?: Record<string, any>
+  }
+}
+
 export const defaultTagideItem = {
   id: '', // string: id único
   title: '', // string: título da obra ou item

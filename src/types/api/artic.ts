@@ -1,11 +1,11 @@
-import { normalizeArtic } from '../../utils/normalizeArtic'
-
-export type ArticType = {
+export type RawArticItem = {
   id: number
-  title: string
-  image_id: string | null
-  description: string | null
-  artist_title: string | null
+  title?: string
+  image_id?: string
+  description?: string
+  artist_title?: string
 }
 
-export type NormalizedArtic = ReturnType<typeof normalizeArtic>
+export type ArticAPIResponse = {
+  data: RawArticItem[]
+}

@@ -1,9 +1,7 @@
 import { Link } from 'react-router'
 import { useEffect, useState } from 'react'
 import { BsMoonFill, BsSunFill } from 'react-icons/bs'
-
-import sereiaBlack from '../../assets/sereia-black.svg'
-import sereiaWhite from '../../assets/sereia-white.svg'
+import SereiaIcon from './icon/SereiaIcon'
 
 const Navbar = () => {
   const [theme, setTheme] = useState(() => {
@@ -24,10 +22,10 @@ const Navbar = () => {
     <div className="navbar bg-base-100 shadow-lg max-w-6xl mx-auto px-4 py-8 w-full">
       <div className="navbar-start">
         <div className="dropdown">
-          <label tabIndex={0} className="btn btn-ghost lg:hidden">
+          <label tabIndex={0} className="btn btn-ghost lg:hidden ">
             <svg
               xmlns="http://www.w3.org/2000/svg"
-              className="h-5 w-5"
+              className="h-5 w-5 hover:text-amber-500"
               fill="none"
               viewBox="0 0 24 24"
               stroke="currentColor"
@@ -67,13 +65,9 @@ const Navbar = () => {
 
         <Link
           to="/"
-          className="btn btn-ghost text-4xl tracking-widest font-sans flex items-center gap-2"
+          className="md:text-4xl text-xl tracking-widest font-sans flex items-center gap-2 hover:bg-transparent hover:text-amber-500 hover:border-transparent"
         >
-          {theme === 'lofi' ? (
-            <img src={sereiaBlack} alt="Logo" className="w-10 h-10" />
-          ) : (
-            <img src={sereiaWhite} alt="Logo" className="w-10 h-10" />
-          )}
+          {theme === 'lofi' ? <SereiaIcon /> : <SereiaIcon />}
           tágide
         </Link>
       </div>
@@ -102,10 +96,16 @@ const Navbar = () => {
       </div>
 
       <div className="navbar-end">
-        <button className="pr-6 cursor-pointer" onClick={toggleTheme}>
+        <button
+          className="md:pr-6 md:p-6 md:text-xl p-2 text-xs cursor-pointer hover:text-amber-500"
+          onClick={toggleTheme}
+        >
           {theme === 'dracula' ? <BsSunFill /> : <BsMoonFill />}
         </button>
-        <Link to="/login" className="btn">
+        <Link
+          to="/login"
+          className="btn p-2 text-xs md:text-base hover:text-amber-500"
+        >
           Login
         </Link>
       </div>

@@ -55,12 +55,12 @@ const Arquivo = () => {
     <section className="max-w-6xl mx-auto px-4 py-8 w-full min-h-screen">
       <div className="grid place-items-center p-5 ">
         <article className="prose lg:prose-xl grid place-items-center p-5">
-          <h1 className="text-5xl tracking-wide text-red-500 text-right align-right md:text-6xl lg:text-7xl mb-2 pb-2 lg:mb-0 lg:pb-0 ">
+          <h1 className="text-4xl tracking-wide text-red-500 text-right align-right md:text-6xl lg:text-7xl mb-2 pb-2 lg:mb-0 lg:pb-0 ">
             A tágide e o arquivo
           </h1>
-          <hr className="border-t-10 md:border-t-12 lg:border-t-15 border-red-500 mb-3 mt-0 pt-0 lg:mb-3 lg:pb-0 lg:pt-0 lg:mt-6  w-full " />
+          <hr className="border-t-10  md:border-t-12 lg:border-t-15 border-red-500 mb-3 mt-0 pt-0 lg:mb-3 lg:pb-0 lg:pt-0 lg:mt-6  w-full " />
 
-          <p className="text-l px-1 text-justify mb-0 ">
+          <p className="text-base md:text-l px-1 text-justify mb-0 ">
             Lorem ipsum dolor sit amet consectetur adipisicing elit.
             Perferendis, delectus, repellendus in minus exercitationem
             accusantium quis debitis quas facilis natus vero amet ratione
@@ -87,6 +87,7 @@ const Arquivo = () => {
                   Art Institute of Chicago
                 </h4>
                 <button
+                  type="button"
                   onClick={toggleArtic}
                   aria-expanded={articIsActive}
                   aria-controls="artic-gallery"
