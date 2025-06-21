@@ -1,25 +1,28 @@
-import { Link } from 'react-router'
+import { NavLink } from 'react-router'
 import { useEffect, useState } from 'react'
 import { BsMoonFill, BsSunFill } from 'react-icons/bs'
 import SereiaIcon from './icon/SereiaIcon'
+import NavLinks from './NavLinks'
 
 const Navbar = () => {
+  //Estado do tema
   const [theme, setTheme] = useState(() => {
     return localStorage.getItem('theme') || 'lofi'
   })
 
-  // Aplica o tema no load
+  //Aplicação do tema no load
   useEffect(() => {
     document.documentElement.setAttribute('data-theme', theme)
     localStorage.setItem('theme', theme)
   }, [theme])
 
+  //Toggle do tema
   const toggleTheme = () => {
     setTheme((prev) => (prev === 'dracula' ? 'lofi' : 'dracula'))
   }
 
   return (
-    <div className="navbar bg-base-100 shadow-lg max-w-6xl mx-auto px-4 py-8 w-full">
+    <div className="navbar  mx-auto bg-base-200 py-2 md:px-10 lg:px-20 w-full ">
       <div className="navbar-start">
         <div className="dropdown">
           <label tabIndex={0} className="btn btn-ghost lg:hidden ">
@@ -40,58 +43,24 @@ const Navbar = () => {
           </label>
           <ul
             tabIndex={0}
-            className="menu menu-compact dropdown-content mt-3 p-2 shadow bg-base-100 rounded-box w-52 text-md"
+            className="menu menu-compact dropdown-content mt-3 p-2 shadow bg-base-100 rounded-box w-52 text-base"
           >
-            <li>
-              <Link to="/">Home</Link>
-            </li>
-            <li>
-              <Link to="/museu">Museu</Link>
-            </li>
-            <li>
-              <Link to="/arquivo">Arquivo</Link>
-            </li>
-            <li>
-              <Link to="/oficina">Oficina</Link>
-            </li>
-            <li>
-              <Link to="/sobre">Sobre</Link>
-            </li>
-            <li>
-              <Link to="/testes">Testes</Link>
-            </li>
+            <NavLinks />
           </ul>
         </div>
 
-        <Link
+        <NavLink
           to="/"
           className="md:text-4xl text-xl tracking-widest font-sans flex items-center gap-2 hover:bg-transparent hover:text-amber-500 hover:border-transparent"
         >
-          {theme === 'lofi' ? <SereiaIcon /> : <SereiaIcon />}
+          <SereiaIcon className="w-5 h-5 md:w-10 md:h-10" />
           tágide
-        </Link>
+        </NavLink>
       </div>
 
       <div className="navbar-center hidden lg:flex">
-        <ul className="menu menu-horizontal p-0 tracking-wider text-md">
-          <li>
-            <Link to="/">Home</Link>
-          </li>
-          <li>
-            <Link to="/museu">Museu</Link>
-          </li>
-          <li>
-            <Link to="/arquivo">Arquivo</Link>
-          </li>
-          <li>
-            <Link to="/oficina">Oficina</Link>
-          </li>
-          <li>
-            <Link to="/sobre">Sobre</Link>
-          </li>
-          <li>
-            <Link to="/testes">Testes</Link>
-          </li>
+        <ul className="menu menu-horizontal p-0 tracking-wider">
+          <NavLinks />
         </ul>
       </div>
 
@@ -102,12 +71,12 @@ const Navbar = () => {
         >
           {theme === 'dracula' ? <BsSunFill /> : <BsMoonFill />}
         </button>
-        <Link
+        <NavLink
           to="/login"
           className="btn p-2 text-xs md:text-base hover:text-amber-500"
         >
           Login
-        </Link>
+        </NavLink>
       </div>
     </div>
   )

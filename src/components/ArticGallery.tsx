@@ -1,6 +1,7 @@
 // components/ArticGallery.jsx
 import { useArticArtworks } from '../hooks/useArticArtworks'
 import { useState } from 'react'
+import { TagideItemType } from '../types/api/tágideItem'
 
 const ArticGallery = () => {
   const [searchQuery, setSearchQuery] = useState('')

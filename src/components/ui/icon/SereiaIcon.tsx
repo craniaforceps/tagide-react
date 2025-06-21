@@ -1,4 +1,4 @@
-const SereiaIcon = () => {
+const SereiaIcon = ({ className }) => {
   return (
     <svg
       version="1.0"
@@ -8,7 +8,7 @@ const SereiaIcon = () => {
       viewBox="0 0 512 512"
       preserveAspectRatio="xMidYMid meet"
       fill="currentColor"
-      className="w-10 h-10"
+      className={`${className}`}
     >
       <g
         transform="translate(0.000000,512.000000) scale(0.100000,-0.100000)"

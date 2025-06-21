@@ -1,12 +1,15 @@
-// hooks/useArticArtworks.js
-import { useQuery } from '@tanstack/react-query'
+import { useQuery, UseQueryResult } from '@tanstack/react-query'
 import { fetchArticArtworks } from '../services/artic'
+import type { TagideItemType } from '../types/api/tágideItem'
 
-export const useArticArtworks = (searchTerm = '', page = 1, limit = 9) => {
-  return useQuery({
+export const useArticArtworks = (
+  searchTerm = '',
+  page = 1,
+  limit = 9
+): UseQueryResult<TagideItemType[], Error> => {
+  return useQuery<TagideItemType[], Error>({
     queryKey: ['articArtworks', searchTerm, page, limit],
     queryFn: () => fetchArticArtworks(searchTerm, page, limit),
-    staleTime: 60 * 60 * 1000, // 1 hora de cache
-    keepPreviousData: true, // mantém dados antigos ao trocar página
+    staleTime: 60 * 60 * 1000,
   })
 }

@@ -3,6 +3,7 @@ import { stripHtml } from '../utils/utils'
 import Editor from '../components/TextEditor'
 import { useArticArtworks } from '../hooks/useArticArtworks'
 import { useEuropeanaArtworks } from '../hooks/useEuropeanaArtworks'
+import { Title } from '../components'
 
 const Testes = () => {
   const [showDescription, setShowDescription] = useState(false)
@@ -49,12 +50,8 @@ const Testes = () => {
     <section className="max-w-6xl mx-auto px-4 py-8 w-full min-h-screen">
       <div className="flex justify-center items-center p-5 w-full min-h-screen">
         <article className="prose lg:prose-xl grid place-items-center p-5">
-          <h1
-            className="text-5xl tracking-wide text-amber-500 text-right align-right md:text-6xl lg:text-7xl mb-2 pb-2 lg:mb-0 lg:pb-0 "
-            s
-          >
-            Inspira-te connosco
-          </h1>
+          <Title text="Inspira-te connosco!" color="amber" />
+
           <hr className="border-t-10 md:border-t-12 lg:border-t-15 border-amber-500 mb-3 mt-0 pt-0 lg:mb-3 lg:pb-0 lg:pt-0 lg:mt-6  w-full" />
 
           {/* <section className="max-w-6xl mx-auto px-4 py-8 w-full min-h-screen">
